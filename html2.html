@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Chandu | Portfolio</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Segoe UI", sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+            transition: 0.3s;
+        }
+
+        /* Navbar */
+
+        .navbar {
+            background: rgba(13, 110, 253, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.4rem;
+        }
+
+        .nav-link {
+            color: white !important;
+            font-weight: 500;
+            margin: 0 5px;
+        }
+
+        .nav-link:hover {
+            color: #ffe082 !important;
+        }
+
+        /* Hero */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 0 50px;
+            background:
+                radial-gradient(circle at top right, #cfe2ff, transparent 35%),
+                linear-gradient(135deg, #f8f9fa, #e9f2ff);
+        }
+
+        .profile-img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 7px solid white;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 800;
+        }
+
+        .hero-title span {
+            color: #0d6efd;
+        }
+
+        .typing {
+            color: #6c757d;
+            font-size: 1.25rem;
+            min-height: 35px;
+        }
+
+        .btn-custom {
+            border-radius: 50px;
+            padding: 12px 25px;
+            font-weight: 600;
+        }
+
+        /* Sections */
+
+        section {
+            padding: 90px 0;
+        }
+
+        .section-title {
+            font-weight: 800;
+            margin-bottom: 45px;
+            text-align: center;
+        }
+
+        .section-title span {
+            color: #0d6efd;
+        }
+
+        /* Cards */
+
+        .info-card {
+            border: none;
+            border-radius: 20px;
+            padding: 25px;
+            height: 100%;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+            transition: 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .info-icon {
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e7f1ff;
+            color: #0d6efd;
+            border-radius: 15px;
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+
+        /* Skills */
+
+        .skill {
+            margin-bottom: 20px;
+        }
+
+        .skill-title {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 7px;
+            font-weight: 600;
+        }
+
+        .progress {
+            height: 10px;
+            border-radius: 20px;
+        }
+
+        .progress-bar {
+            border-radius: 20px;
+        }
+
+        /* Project */
+
+        .project-card {
+            border: none;
+            border-radius: 25px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-header {
+            min-height: 230px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            background:
+                linear-gradient(135deg, #0d6efd, #6610f2);
+        }
+
+        .project-header i {
+            font-size: 90px;
+        }
+
+        .project-body {
+            padding: 30px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e7f1ff;
+            color: #0d6efd;
+            border-radius: 50px;
+            padding: 6px 12px;
+            font-size: 13px;
+            margin: 3px;
+            font-weight: 600;
+        }
+
+        /* Contact */
+
+        .contact-box {
+            background: linear-gradient(135deg, #0d6efd, #6610f2);
+            color: white;
+            border-radius: 30px;
+            padding: 50px 25px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            text-decoration: none;
+            margin: 5px;
+            transition: 0.3s;
+        }
+
+        .social-link:hover {
+            background: white;
+            color: #0d6efd;
+            transform: translateY(-4px);
+        }
+
+        footer {
+            background: #111827;
+            color: #adb5bd;
+            padding: 25px 0;
+            text-align: center;
+        }
+
+        /* Dark Mode */
+
+        body.dark {
+            background: #0f172a;
+            color: #e2e8f0;
+        }
+
+        body.dark .hero {
+            background:
+                radial-gradient(circle at top right, #1e3a8a, transparent 35%),
+                #0f172a;
+        }
+
+        body.dark .info-card,
+        body.dark .project-card {
+            background: #1e293b;
+            color: #e2e8f0;
+        }
+
+        body.dark .text-muted,
+        body.dark .typing {
+            color: #94a3b8 !important;
+        }
+
+        body.dark .info-icon {
+            background: #172554;
+        }
+
+        /* Scroll animation */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile */
+
+        @media (max-width: 768px) {
+
+            .hero {
+                text-align: center;
+                padding-top: 120px;
+            }
+
+            .profile-img {
+                width: 190px;
+                height: 190px;
+                margin-bottom: 30px;
+            }
+
+            section {
+                padding: 65px 0;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .project-header {
+                min-height: 180px;
+            }
+
+            .project-header i {
+                font-size: 70px;
+            }
+
+            .contact-box {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="#home">
+                Chandu<span class="text-warning">.</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarMenu">
+
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+
+                    <li class="nav-item ms-lg-2">
+                        <button id="themeBtn" class="btn btn-light rounded-circle" title="Change theme">
+                            <i class="bi bi-moon-fill"></i>
+                        </button>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section id="home" class="hero">
+
+        <div class="container">
+
+            <div class="row align-items-center g-5">
+
+                <div class="col-lg-5 text-center">
+
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_oLVwByNWgJ9kcIp1e7XTf0ayI7ZL0HW3poKr18_d-mMsGij11vg5dSw&s"
+                        alt="Chandu" class="profile-img">
+
+                </div>
+
+                <div class="col-lg-7">
+
+                    <p class="text-primary fw-bold mb-2">
+                        HELLO, I'M
+                    </p>
+
+                    <h1 class="hero-title">
+                        Chandu<span>.</span>
+                    </h1>
+
+                    <div class="typing">
+                        <span id="typingText"></span>
+                    </div>
+
+                    <p class="lead text-muted mt-3">
+                        A passionate college student interested in technology,
+                        web development and creating useful digital experiences.
+                    </p>
+
+                    <div class="mt-4">
+
+                        <a href="#projects" class="btn btn-primary btn-custom me-2 mb-2">
+                            <i class="bi bi-code-slash"></i>
+                            View Projects
+                        </a>
+
+                        <a href="#contact" class="btn btn-outline-primary btn-custom mb-2">
+                            Contact Me
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ABOUT ================= -->
+
+    <section id="about">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                About <span>Me</span>
+            </h2>
+
+            <div class="row g-4">
+
+                <div class="col-6 col-lg-3 reveal">
+
+                    <div class="info-card">
+
+                        <div class="info-icon">
+                            <i class="bi bi-person-badge"></i>
+                        </div>
+
+                        <h5>Student ID</h5>
+                        <p class="text-muted mb-0">03</p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-6 col-lg-3 reveal">
+
+                    <div class="info-card">
+
+                        <div class="info-icon">
+                            <i class="bi bi-mortarboard"></i>
+                        </div>
+
+                        <h5>CGPA</h5>
+                        <p class="text-muted mb-0">8.3</p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-12 col-lg-3 reveal">
+
+                    <div class="info-card">
+
+                        <div class="info-icon">
+                            <i class="bi bi-building"></i>
+                        </div>
+
+                        <h5>College</h5>
+                        <p class="text-muted mb-0">
+                            Sir C R Reddy College
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-12 col-lg-3 reveal">
+
+                    <div class="info-card">
+
+                        <div class="info-icon">
+                            <i class="bi bi-laptop"></i>
+                        </div>
+
+                        <h5>Interest</h5>
+                        <p class="text-muted mb-0">
+                            Web Development
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SKILLS ================= -->
+
+    <section id="skills" class="bg-body-tertiary">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                My <span>Skills</span>
+            </h2>
+
+            <div class="row justify-content-center">
+
+                <div class="col-lg-8">
+
+                    <div class="skill reveal">
+
+                        <div class="skill-title">
+                            <span>HTML</span>
+                            <span>90%</span>
+                        </div>
+
+                        <div class="progress">
+                            <div class="progress-bar" style="width:90%"></div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="skill reveal">
+
+                        <div class="skill-title">
+                            <span>CSS</span>
+                            <span>85%</span>
+                        </div>
+
+                        <div class="progress">
+                            <div class="progress-bar" style="width:85%"></div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="skill reveal">
+
+                        <div class="skill-title">
+                            <span>JavaScript</span>
+                            <span>75%</span>
+                        </div>
+
+                        <div class="progress">
+                            <div class="progress-bar" style="width:75%"></div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="skill reveal">
+
+                        <div class="skill-title">
+                            <span>Bootstrap</span>
+                            <span>85%</span>
+                        </div>
+
+                        <div class="progress">
+                            <div class="progress-bar" style="width:85%"></div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="skill reveal">
+
+                        <div class="skill-title">
+                            <span>Java</span>
+                            <span>70%</span>
+                        </div>
+
+                        <div class="progress">
+                            <div class="progress-bar" style="width:70%"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PROJECT ================= -->
+
+    <section id="projects">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Featured <span>Project</span>
+            </h2>
+
+            <div class="row justify-content-center">
+
+                <div class="col-lg-9 reveal">
+
+                    <div class="project-card">
+
+                        <div class="project-header">
+
+                            <i class="bi bi-lightbulb"></i>
+
+                        </div>
+
+                        <div class="project-body">
+
+                            <span class="badge bg-primary mb-2">
+                                SPECIAL PROJECT IDEA
+                            </span>
+
+                            <h2>
+                                Campus Connect
+                            </h2>
+
+                            <h5 class="text-primary">
+                                Smart Student Hub
+                            </h5>
+
+                            <p class="text-muted mt-3">
+                                A modern student platform where students can
+                                discover campus events, share notes, find
+                                study resources, connect with classmates,
+                                and showcase their projects.
+                            </p>
+
+                            <div class="mb-4">
+
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">Bootstrap</span>
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">Java</span>
+
+                            </div>
+
+                            <button class="btn btn-primary btn-custom" onclick="showProject()">
+                                Explore Project
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CONTACT ================= -->
+
+    <section id="contact">
+
+        <div class="container">
+
+            <div class="contact-box text-center reveal">
+
+                <h2 class="fw-bold">
+                    Let's Connect
+                </h2>
+
+                <p class="mt-3 mb-4">
+                    Interested in technology, projects and new ideas?
+                    Let's build something interesting.
+                </p>
+
+                <a href="mailto:chandu@example.com" class="btn btn-light btn-custom">
+                    <i class="bi bi-envelope"></i>
+                    Email Me
+                </a>
+
+                <div class="mt-4">
+
+                    <a href="#" class="social-link">
+                        <i class="bi bi-github"></i>
+                    </a>
+
+                    <a href="#" class="social-link">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+
+                    <a href="#" class="social-link">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="container">
+
+            <p class="mb-1">
+                © <span id="year"></span> Chandu
+            </p>
+
+            <small>
+                Built with Bootstrap & JavaScript ❤️
+            </small>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ================= PROJECT MODAL ================= -->
+
+    <div class="modal fade" id="projectModal" tabindex="-1">
+
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <h5 class="modal-title">
+                        🚀 Campus Connect
+                    </h5>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+                </div>
+
+                <div class="modal-body">
+
+                    <p>
+                        Campus Connect is a student-focused platform designed
+                        to bring everything students need into one place.
+                    </p>
+
+                    <hr>
+
+                    <strong>Main Features</strong>
+
+                    <ul class="mt-3">
+
+                        <li>Student announcements</li>
+
+                        <li>Notes and study resources</li>
+
+                        <li>College events</li>
+
+                        <li>Student project showcase</li>
+
+                        <li>Student-to-student communication</li>
+
+                        <li>Campus opportunities</li>
+
+                    </ul>
+
+                    <div class="alert alert-primary mt-3">
+
+                        💡 Future idea:
+                        Add an AI assistant that helps students find
+                        notes, events and academic resources.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Bootstrap JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+
+    <script>
+
+        /* ================= TYPING EFFECT ================= */
+
+        const texts = [
+            "Student",
+            "Web Developer",
+            "Java Programmer",
+            "Creative Thinker"
+        ];
+
+        let textIndex = 0;
+        let charIndex = 0;
+        let deleting = false;
+
+        const typingText = document.getElementById("typingText");
+
+        function typeEffect() {
+
+            const currentText = texts[textIndex];
+
+            if (!deleting) {
+
+                typingText.textContent =
+                    currentText.substring(0, charIndex + 1);
+
+                charIndex++;
+
+                if (charIndex === currentText.length) {
+
+                    deleting = true;
+
+                    setTimeout(typeEffect, 1200);
+
+                    return;
+                }
+
+            } else {
+
+                typingText.textContent =
+                    currentText.substring(0, charIndex - 1);
+
+                charIndex--;
+
+                if (charIndex === 0) {
+
+                    deleting = false;
+
+                    textIndex =
+                        (textIndex + 1) % texts.length;
+
+                }
+
+            }
+
+            setTimeout(
+                typeEffect,
+                deleting ? 60 : 100
+            );
+        }
+
+        typeEffect();
+
+
+        /* ================= DARK MODE ================= */
+
+        const themeBtn =
+            document.getElementById("themeBtn");
+
+        themeBtn.addEventListener("click", function () {
+
+            document.body.classList.toggle("dark");
+
+            const icon =
+                themeBtn.querySelector("i");
+
+            if (document.body.classList.contains("dark")) {
+
+                icon.classList.remove("bi-moon-fill");
+
+                icon.classList.add("bi-sun-fill");
+
+            } else {
+
+                icon.classList.remove("bi-sun-fill");
+
+                icon.classList.add("bi-moon-fill");
+
+            }
+
+        });
+
+
+        /* ================= PROJECT MODAL ================= */
+
+        function showProject() {
+
+            const modal =
+                new bootstrap.Modal(
+                    document.getElementById("projectModal")
+                );
+
+            modal.show();
+
+        }
+
+
+        /* ================= SCROLL REVEAL ================= */
+
+        function revealElements() {
+
+            const elements =
+                document.querySelectorAll(".reveal");
+
+            elements.forEach(function (element) {
+
+                const position =
+                    element.getBoundingClientRect().top;
+
+                const windowHeight =
+                    window.innerHeight;
+
+                if (position < windowHeight - 80) {
+
+                    element.classList.add("active");
+
+                }
+
+            });
+
+        }
+
+        window.addEventListener(
+            "scroll",
+            revealElements
+        );
+
+        revealElements();
+
+
+        /* ================= CURRENT YEAR ================= */
+
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+
+        /* ================= CLOSE MOBILE MENU ================= */
+
+        document.querySelectorAll(".nav-link")
+            .forEach(function (link) {
+
+                link.addEventListener("click", function () {
+
+                    const menu =
+                        document.getElementById("navbarMenu");
+
+                    if (menu.classList.contains("show")) {
+
+                        bootstrap.Collapse
+                            .getOrCreateInstance(menu)
+                            .hide();
+
+                    }
+
+                });
+
+            });
+
+    </script>
+
+</body>
+
+</html>
